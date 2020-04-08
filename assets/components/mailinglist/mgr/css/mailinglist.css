@@ -1,0 +1,96 @@
+#modx-mailinglist-files
+{
+  background-color: transparent;
+  border-radius: 3px;
+  box-shadow: 0 0 5px 0 rgba(0,0,0,.1);
+}
+#modx-mailinglist-files .x-panel-header
+{
+	margin: 0;
+	padding: 15px;
+}
+
+#mailinglist-users
+{
+  background-color: transparent;
+  border-radius: 3px;
+  box-shadow: 0 0 5px 0 rgba(0,0,0,.1);
+}
+#mailinglist-users .x-panel-header
+{
+	margin: 0;
+	padding: 15px;
+}
+
+#mailinglist-anonym
+{
+  background-color: transparent;
+  border-radius: 3px;
+  box-shadow: 0 0 5px 0 rgba(0,0,0,.1);
+}
+#mailinglist-anonym .x-panel-header
+{
+	margin: 0;
+	padding: 15px;
+}
+
+#mailinglist-instances
+{
+  background-color: transparent;
+  border-radius: 3px;
+  box-shadow: 0 0 5px 0 rgba(0,0,0,.1);
+}
+#mailinglist-instances .x-panel-header
+{
+	margin: 0;
+	padding: 15px;
+}
+
+.panel-warning {
+  background-color: #F0F0F0;
+  border: none;
+  border-radius: 0;
+  color: #ce2125;
+  line-height: 1.5;
+  margin-top: 15px;
+  padding: 15px!important;
+}
+
+.panel-desc {
+  background-color: #F0F0F0;
+  border: none;
+  border-radius: 0;
+  color: #53595F;
+  line-height: 1.5;
+  margin-top: 15px;
+  padding: 15px!important;
+}
+
+.instance-wrapper
+{
+  background-color: transparent;
+  border-radius: 3px;
+  box-shadow: 0 0 5px 0 rgba(0,0,0,.1);
+  position:relative;
+  padding: 15px;
+  margin-bottom:20px;
+}
+.instance-wrapper .x-panel-header
+{
+	margin: 0;
+}
+.instance-wrapper .x-panel-tbar
+{
+	margin: 0;
+}
+
+.instance-wrapper .x-panel-tbar .tbar-status
+{
+	box-shadow:none;
+}
+.instance-wrapper .x-panel-tbar .tbar-status.x-btn-over
+{
+	background:none;
+	color:#555;
+	cursor:auto;
+}

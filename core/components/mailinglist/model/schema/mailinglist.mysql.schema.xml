@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<model package="mailinglist" version="1.0" baseClass="xPDOObject" platform="mysql" defaultEngine="MyISAM" phpdoc-package="mailinglist">
+    <object class="MailingList" extends="modResource">
+		<composite alias="Settings" class="MailingListSettings" local="id" foreign="mailinglist" cardinality="one" owner="local" />
+		<composite alias="Subscribers" class="MailingListSubscribers" local="id" foreign="mailinglist" cardinality="many" owner="local" />
+		<composite alias="Instances" class="MailingListInstance" local="id" foreign="mailinglist" cardinality="many" owner="local" />
+		<composite alias="Queues" class="MailingListQueue" local="id" foreign="mailinglist" cardinality="many" owner="local" />
+	</object>
+	
+	<object class="MailingListSettings" table="mailinglist_settings" extends="xPDOObject">
+		<field key="mailinglist" dbtype="int" precision="10" phptype="integer" attributes="unsigned" null="false" default="0" index="pk" />
+		<field key="emailsubject" dbtype="text" phptype="string" null="true" default="NULL" />
+		<field key="emailfrom" dbtype="text" phptype="string" null="true" default="NULL" />
+		<field key="emailfromname" dbtype="text" phptype="string" null="true" default="NULL" />
+		<field key="emailreplyto" dbtype="text" phptype="string" null="true" default="NULL" />
+		<field key="emailreplytoname" dbtype="text" phptype="string" null="true"  default="NULL" />
+		<field key="attachments" dbtype="text" phptype="string" null="true"  default="NULL" />
+
+		<index alias="unique_key" name="unique_key" primary="true" unique="true" type="BTREE">
+			<column key="mailinglist" length="" collation="A" null="false" />
+		</index>
+
+		<aggregate alias="MailingList" class="MailingList" local="mailinglist" foreign="id" cardinality="one" owner="foreign" />
+	</object>
+	
+	<object class="MailingListSubscribers" table="mailinglist_subscribers" extends="xPDOObject">
+		<field key="id" dbtype="int" precision="10" phptype="integer" attributes="unsigned" null="false" default="0" index="pk" />
+		<field key="mailinglist" dbtype="int" precision="10" phptype="integer" attributes="unsigned" null="false" default="0" />
+		<field key="type" dbtype="text" phptype="string" null="true" default="NULL" />
+		<field key="object_id" dbtype="int" precision="10" phptype="integer" attributes="unsigned" null="false" default="0" />
+		<field key="exclude" dbtype="text" phptype="string" null="true" default="NULL" />
+		<field key="fields" dbtype="text" phptype="string" null="true" default="NULL" />
+		<field key="hash" dbtype="char" precision="32" phptype="string" null="true"  default="NULL" index="pk" />
+		
+		<index alias="PRIMARY" name="PRIMARY" primary="true" unique="true" type="BTREE">
+			<column key="id" length="" collation="A" null="false" />
+		</index>
+		<index alias="unique_key" name="unique_key" primary="false" unique="true" type="BTREE">
+			<column key="hash" length="" collation="A" null="false" />
+		</index>
+
+		<composite alias="Queues" class="MailingListQueue" local="id" foreign="subscriber" cardinality="many" owner="local" />
+		<aggregate alias="MailingList" class="MailingList" local="mailinglist" foreign="id" cardinality="one" owner="foreign" />
+		<aggregate alias="User" class="modUser" local="object_id" foreign="id" cardinality="one" owner="foreign" />
+		<aggregate alias="Group" class="modUserGroup" local="object_id" foreign="id" cardinality="one" owner="foreign" />
+		
+	</object>
+	
+	<object class="MailingListInstance" table="mailinglist_instances" extends="xPDOObject">
+		<field key="id" dbtype="int" precision="10" phptype="integer" attributes="unsigned" null="false" default="0" index="pk" />
+		<field key="mailinglist" dbtype="int" precision="10" phptype="integer" attributes="unsigned" null="false" default="0" />
+		<field key="status" dbtype="text" phptype="string" null="true" default="NULL" />
+		<field key="start_date" dbtype="text" phptype="string" null="true" default="NULL" />
+		<field key="end_date" dbtype="text" phptype="string" null="true" default="NULL" />
+		<field key="task" dbtype="text" phptype="string" null="true" default="NULL" />
+		
+		<index alias="PRIMARY" name="PRIMARY" primary="true" unique="true" type="BTREE">
+			<column key="id" length="" collation="A" null="false" />
+		</index>
+		
+		<composite alias="Queues" class="MailingListQueue" local="id" foreign="instance" cardinality="many" owner="local" />
+		<aggregate alias="MailingList" class="MailingList" local="mailinglist" foreign="id" cardinality="one" owner="foreign" />
+	</object>
+	
+	<object class="MailingListQueue" table="mailinglist_queues" extends="xPDOObject">
+		<field key="id" dbtype="int" precision="10" phptype="integer" attributes="unsigned" null="false" default="0" index="pk" />
+		<field key="mailinglist" dbtype="int" precision="10" phptype="integer" attributes="unsigned" null="false" default="0" />
+		<field key="instance" dbtype="int" precision="10" phptype="integer" attributes="unsigned" null="false" default="0" />
+		<field key="status" dbtype="text" phptype="string" null="true" default="NULL" />
+		<field key="email" dbtype="text" phptype="string" null="true" default="NULL" />
+		<field key="type" dbtype="text" phptype="string" null="true" default="NULL" />
+		<field key="subscriber" dbtype="int" precision="10" phptype="integer" attributes="unsigned" null="false" default="0" />
+		<field key="hash" dbtype="text" phptype="string" null="true"  default="NULL" />
+		
+		<index alias="PRIMARY" name="PRIMARY" primary="true" unique="true" type="BTREE">
+			<column key="id" length="" collation="A" null="false" />
+		</index>
+		
+		<aggregate alias="MailingList" class="MailingList" local="mailinglist" foreign="id" cardinality="one" owner="foreign" />
+		<aggregate alias="Instance" class="MailingListInstance" local="instance" foreign="id" cardinality="one" owner="foreign" />
+		<aggregate alias="Subscriber" class="MailingListSubscribers" local="subscriber" foreign="id" cardinality="one" owner="foreign" />
+	</object>
+</model>
