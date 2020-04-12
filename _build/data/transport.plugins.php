@@ -26,9 +26,7 @@ foreach($pconfig['plugins']?:[] as $plugin=>$options){
             'editor_type' => 0,
             'cache_type' => 0
         ],
-        'options'=>[
-            'search_by'=>['name'],
-        ],
+        'options'=>$config['data_options']['modPlugin'],
         'relations'=>[
             'modCategory'=>[
                 'main'=>'Plugins'
@@ -40,11 +38,7 @@ foreach($pconfig['plugins']?:[] as $plugin=>$options){
         $fields=array_merge(['event'=>$event,'priority'=>0],is_array($fields)?$fields:[]);
         $data['modPluginEvent'][$plugin.'__'.$event]=[
             'fields'=>$fields,
-            'options'=>[
-                'search_by'=>['pluginid', 'event'],
-                'preserve'=>true,
-                'update'=>false
-            ],
+            'options'=>$config['data_options']['modPluginEvent'],
             'relations'=>[
                 'modPlugin'=>[
                     $plugin=>'PluginEvents'
@@ -62,9 +56,6 @@ foreach($pconfig['events']?:[] as $event=>$fields){
     $fields=array_merge(['name'=>$event,'service'=>6],is_array($fields)?$fields:[]);
     $data['modEvent'][$event]=[
         'fields'=>$fields,
-        'options'=>[
-            'search_by'=>['name'],
-            'preserve'=>true
-        ]
+        'options'=>$config['data_options']['modEvent'],
     ];
 }

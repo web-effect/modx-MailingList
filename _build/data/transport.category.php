@@ -7,19 +7,13 @@ $data['modCategory']=[
         'fields'=>[
             'category'=>$config['component']['name']
         ],
-        'options'=>[
-            'search_by'=>['category'],
-            //'update'=>true,
-            //'preserve'=>false
-        ]
+        'options'=>$config['data_options']['modCategory']
     ],
     'defaults'=>[
         'fields'=>[
             'category'=>'defaults'
         ],
-        'options'=>[
-            'search_by'=>['category','parent'],
-        ],
+        'options'=>$config['data_options']['modCategory.child'],
         'relations'=>[
             'modCategory'=>[
                 'main'=>'Children'

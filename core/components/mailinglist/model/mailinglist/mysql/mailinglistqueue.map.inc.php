@@ -4,6 +4,10 @@ $xpdo_meta_map['MailingListQueue']= array (
   'version' => '1.0',
   'table' => 'mailinglist_queues',
   'extends' => 'xPDOObject',
+  'tableMeta' => 
+  array (
+    'engine' => 'MyISAM',
+  ),
   'fields' => 
   array (
     'id' => 0,

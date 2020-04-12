@@ -16,7 +16,7 @@
 		<field key="emailreplytoname" dbtype="text" phptype="string" null="true"  default="NULL" />
 		<field key="attachments" dbtype="text" phptype="string" null="true"  default="NULL" />
 
-		<index alias="unique_key" name="unique_key" primary="true" unique="true" type="BTREE">
+		<index alias="PRIMARY" name="PRIMARY" primary="true" unique="true" type="BTREE">
 			<column key="mailinglist" length="" collation="A" null="false" />
 		</index>
 
@@ -30,7 +30,7 @@
 		<field key="object_id" dbtype="int" precision="10" phptype="integer" attributes="unsigned" null="false" default="0" />
 		<field key="exclude" dbtype="text" phptype="string" null="true" default="NULL" />
 		<field key="fields" dbtype="text" phptype="string" null="true" default="NULL" />
-		<field key="hash" dbtype="char" precision="32" phptype="string" null="true"  default="NULL" index="pk" />
+		<field key="hash" dbtype="char" precision="32" phptype="string" null="false" index="unique" />
 		
 		<index alias="PRIMARY" name="PRIMARY" primary="true" unique="true" type="BTREE">
 			<column key="id" length="" collation="A" null="false" />

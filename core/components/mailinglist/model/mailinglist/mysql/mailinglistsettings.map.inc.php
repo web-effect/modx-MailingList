@@ -4,6 +4,10 @@ $xpdo_meta_map['MailingListSettings']= array (
   'version' => '1.0',
   'table' => 'mailinglist_settings',
   'extends' => 'xPDOObject',
+  'tableMeta' => 
+  array (
+    'engine' => 'MyISAM',
+  ),
   'fields' => 
   array (
     'mailinglist' => 0,
@@ -71,9 +75,9 @@ $xpdo_meta_map['MailingListSettings']= array (
   ),
   'indexes' => 
   array (
-    'unique_key' => 
+    'PRIMARY' => 
     array (
-      'alias' => 'unique_key',
+      'alias' => 'PRIMARY',
       'primary' => true,
       'unique' => true,
       'type' => 'BTREE',

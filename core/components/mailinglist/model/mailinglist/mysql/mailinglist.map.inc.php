@@ -3,6 +3,10 @@ $xpdo_meta_map['MailingList']= array (
   'package' => 'mailinglist',
   'version' => '1.0',
   'extends' => 'modResource',
+  'tableMeta' => 
+  array (
+    'engine' => 'MyISAM',
+  ),
   'fields' => 
   array (
   ),

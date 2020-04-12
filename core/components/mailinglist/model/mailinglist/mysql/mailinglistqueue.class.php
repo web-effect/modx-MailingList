@@ -1,3 +1,3 @@
 <?php
-require_once (dirname(dirname(__FILE__)) . '/mailinglistqueue.class.php');
+require_once (dirname(__DIR__) . '/mailinglistqueue.class.php');
 class MailingListQueue_mysql extends MailingListQueue {}

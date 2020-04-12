@@ -4,6 +4,10 @@ $xpdo_meta_map['MailingListInstance']= array (
   'version' => '1.0',
   'table' => 'mailinglist_instances',
   'extends' => 'xPDOObject',
+  'tableMeta' => 
+  array (
+    'engine' => 'MyISAM',
+  ),
   'fields' => 
   array (
     'id' => 0,
@@ -46,14 +50,14 @@ $xpdo_meta_map['MailingListInstance']= array (
       'dbtype' => 'text',
       'phptype' => 'string',
       'null' => true,
-      'default' => null,
+      'default' => NULL,
     ),
     'end_date' => 
     array (
       'dbtype' => 'text',
       'phptype' => 'string',
       'null' => true,
-      'default' => null,
+      'default' => NULL,
     ),
     'task' => 
     array (

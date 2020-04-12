@@ -4,6 +4,10 @@ $xpdo_meta_map['MailingListSubscribers']= array (
   'version' => '1.0',
   'table' => 'mailinglist_subscribers',
   'extends' => 'xPDOObject',
+  'tableMeta' => 
+  array (
+    'engine' => 'MyISAM',
+  ),
   'fields' => 
   array (
     'id' => 0,
@@ -70,9 +74,8 @@ $xpdo_meta_map['MailingListSubscribers']= array (
       'dbtype' => 'char',
       'precision' => '32',
       'phptype' => 'string',
-      'null' => true,
-      'default' => NULL,
-      'index' => 'pk',
+      'null' => false,
+      'index' => 'unique',
     ),
   ),
   'indexes' => 
